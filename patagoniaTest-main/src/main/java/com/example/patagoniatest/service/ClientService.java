@@ -52,24 +52,5 @@ public class ClientService {
         clientRepository.save(client.get());
     }
 
-
-
-   /* public void updateClientes(Long id, Client clientes){
-        Client client = new Client();
-        try {
-          client.
-        }catch (IllegalStateException e){
-            System.out.println("El id solicitado no existe");
-        }
-        if (!client.get().equals(cliente.getFullName())){
-            client.get().setFullName(cliente.getFullName());
-        } if(!client.get().equals(cliente.getIncome())){
-            client.get().setIncome(cliente.getIncome());
-        }
-        clientRepository.save(client.get());
-
-    }*/
-
-
 }
 
