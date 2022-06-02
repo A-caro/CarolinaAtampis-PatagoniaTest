@@ -41,8 +41,8 @@ public class ClientController {
 
 
     @PutMapping("/update/{id}")
-    public Optional<Client> updateCliente(@PathVariable Long id, @RequestBody Client client){
-        return clientService.findById(id);
+    public void updateCliente(@PathVariable Long id, @RequestBody Client client){
+        clientService.updateCliente(id, client);
     }
 
 

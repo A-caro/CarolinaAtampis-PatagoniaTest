@@ -36,18 +36,17 @@ public class ClientService {
         return clientRepository.findById(id);
     }
 
-
     public void updateCliente(Long id, Client cliente){
         Optional<Client> client = clientRepository.findById(id);
         try{
             client.isPresent();
+            if (!client.get().equals(cliente.getFullName())){
+                client.get().setFullName(cliente.getFullName());
+            } if(client.get().equals(cliente.getIncome())){
+                client.get().setIncome(cliente.getIncome());
+            }
     }catch (IllegalStateException e){
-            System.out.println("El id solicitado no existe");
-        }
-        if (!client.get().equals(cliente.getFullName())){
-            client.get().setFullName(cliente.getFullName());
-        } if(!client.get().equals(cliente.getIncome())){
-            client.get().setIncome(cliente.getIncome());
+            System.out.println("El id solicitado no existe" + e.getMessage());
         }
         clientRepository.save(client.get());
     }
