@@ -8,13 +8,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest //permite conectarse al repositorio y poder utilizarlo
 class ClientRepositoryTest {
+
     @Autowired
     ClientRepository clientRepository;
 
     @Test
-    void findById (){
-        assertTrue(clientRepository.findById(2L).isPresent());
+    void findById(){
+        assertTrue(clientRepository.findById(12L).isPresent());
+        assertEquals("Potus Alegre", clientRepository.findById(12L).get().getFullName());
     }
+
 
 
 }
