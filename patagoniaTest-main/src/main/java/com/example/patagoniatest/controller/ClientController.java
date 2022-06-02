@@ -35,7 +35,7 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Client> getMovieById(@PathVariable Long id){
+    public Optional<Client> getClientById(@PathVariable Long id){
         return clientService.findById(id);
     }
 
