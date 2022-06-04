@@ -1,21 +1,37 @@
 package com.example.patagoniatest.service;
 
 import com.example.patagoniatest.model.Client;
+import com.example.patagoniatest.repository.ClientRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
+@SpringBootTest
 class ClientServiceTest {
+    Client client;
 
-   /* @Test
+
+    @Mock
+    ClientRepository clientRepository;
+
+    @InjectMocks
+    ClientService clientService;
+
+    @BeforeEach
+    void setUp() {
+        client = new Client(1L, "Menta Alegre", 3000);
+    }
+
+    @Test
     void getClients() {
-        Client client = new Client(12L, "Monica Belucci", 2000);
-        assertEquals(12, client.getId());
-        assertEquals("Monica Belucci", client.getFullName());
-       *//* assertTrue(client.getFullName() == "Ernestina Ocampo");
-        assertTrue(client.getId() == 1L);
-        assertTrue(client.getIncome() == 2000);*//*
-    }*/
+    }
 
     @Test
     void addClient() {
@@ -27,6 +43,8 @@ class ClientServiceTest {
 
     @Test
     void findById() {
+        when(clientRepository.findById(1L)).thenReturn(Optional.of(client));
+//        assertNotNull();
     }
 
     @Test
