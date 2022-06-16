@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -49,6 +51,22 @@ public class ClientService {
             System.out.println("El id solicitado no existe" + e.getMessage());
         }
         clientRepository.save(client.get());
+    }
+
+
+
+
+    public OptionalDouble getEarningsAverage() {
+        List<Client> clients = clientRepository.findAll();
+        return clients.stream()
+                .mapToDouble(Client::getIncome)
+                .average();
+    }
+
+    public List<Client> getPromedio() {
+        List<Client> clients = clientRepository.findAll();
+        return clients.stream().filter(client -> client.getIncome() >= 10000)
+                .collect(Collectors.toList());
     }
 
 }
