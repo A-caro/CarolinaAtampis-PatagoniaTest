@@ -5,6 +5,11 @@ spring:
     url: jdbc:mysql://localhost:3306/patagonia_test
     username: caroatam
     password: 40975241
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8081
+
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
