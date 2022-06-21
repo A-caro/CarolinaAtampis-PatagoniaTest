@@ -6,4 +6,9 @@ spring:
       server:
         git:
           default-label: master
-          uri: 
+          uri: https://github.com/A-caro/CarolinaAtampis-PatagoniaTest.git
+          search-paths: config-data
+
+  application:
+    name: config-server
+
