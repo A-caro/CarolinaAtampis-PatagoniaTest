@@ -60,11 +60,8 @@ class ClientControllerTest {
     void findById() throws Exception {
         Client client = new Client(1L,"Menta Alegre", 3000);
         when(clientService.findById(1L)).thenReturn(Optional.of(client));
-
         mockMvc.perform(MockMvcRequestBuilders.get("/clients/1").contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().is(200))
-                .andExpect(jsonPath("fullName").value("Menta Alegre"));
-
+                .andExpect(MockMvcResultMatchers.status().is(200));
 
     }
 }
