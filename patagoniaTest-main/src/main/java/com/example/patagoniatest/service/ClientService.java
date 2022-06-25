@@ -1,6 +1,8 @@
 package com.example.patagoniatest.service;
 
-import com.example.patagoniatest.model.Client;
+import com.example.patagoniatest.entity.Client;
+import com.example.patagoniatest.feignclients.LoanFeignClient;
+import com.example.patagoniatest.model.Loan;
 import com.example.patagoniatest.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,12 +10,15 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.stream.Collectors;
+
 
 @Service
 @Transactional
 public class ClientService {
+
+    @Autowired
+    LoanFeignClient loanFeignClient;
+
 
     private final ClientRepository clientRepository;
 
@@ -53,21 +58,12 @@ public class ClientService {
         clientRepository.save(client.get());
     }
 
-
-
-
-    public OptionalDouble getEarningsAverage() {
-        List<Client> clients = clientRepository.findAll();
-        return clients.stream()
-                .mapToDouble(Client::getIncome)
-                .average();
+    public Loan saveLoan(int id, Loan loan){
+    loan.setId(id);
+    Loan loanNew = loanFeignClient.save(loan);
+    return loanNew;
     }
 
-    public List<Client> getPromedio() {
-        List<Client> clients = clientRepository.findAll();
-        return clients.stream().filter(client -> client.getIncome() >= 10000)
-                .collect(Collectors.toList());
-    }
 
 }
 

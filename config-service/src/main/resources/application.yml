@@ -10,5 +10,5 @@ spring:
           search-paths: config-data
 
   application:
-    name: config-server
+    name: config-service
 

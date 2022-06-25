@@ -1,9 +1,8 @@
 package com.example.patagoniatest.controller;
 
-import com.example.patagoniatest.model.Client;
+import com.example.patagoniatest.entity.Client;
 import com.example.patagoniatest.repository.ClientRepository;
 import com.example.patagoniatest.service.ClientService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 

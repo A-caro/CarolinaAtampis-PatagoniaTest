@@ -1,6 +1,7 @@
 package com.example.patagoniatest.controller;
 
-import com.example.patagoniatest.model.Client;
+import com.example.patagoniatest.entity.Client;
+import com.example.patagoniatest.model.Loan;
 import com.example.patagoniatest.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +44,12 @@ public class ClientController {
     @PutMapping("/update/{id}")
     public void updateCliente(@PathVariable Long id, @RequestBody Client client){
         clientService.updateCliente(id, client);
+    }
+
+    @PostMapping("/saveclients/{id}")
+    public Loan saveLoan(@PathVariable("id") int id, @RequestBody Loan loan){
+        Loan loanNew = clientService.saveLoan(id, loan);
+        return loan;
     }
 
 
