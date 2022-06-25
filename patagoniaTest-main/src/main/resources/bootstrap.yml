@@ -5,11 +5,10 @@ spring:
     username: caroatam
     password: 40975241
 
-  #CONFIGURACION PARA EL CONFIG CLIENT
   cloud:
     config:
       enabled: true
-      uri: http://localhost:8001
+      uri: http://localhost:8081
 
   jpa:
     show-sql: true
@@ -18,7 +17,6 @@ spring:
     name: clientservice
 
 
-#CONFIG EUREKA CLIENT
 eureka:
   client:
     serviceUrl:
