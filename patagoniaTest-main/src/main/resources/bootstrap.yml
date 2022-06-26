@@ -2,8 +2,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/patagonia_test
-    username:
-    password:
+    username: caroatam
+    password: 40975241
 
   cloud:
     config:
