@@ -3,11 +3,11 @@ package com.example.loanservice.controller;
 import com.example.loanservice.entity.Loan;
 import com.example.loanservice.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequestMapping("/loan")
@@ -22,13 +22,9 @@ public class LoanController {
     }
 
     @PostMapping()
-    public Loan save(@RequestBody Loan loan){
-        return loanService.save(loan);
-    }
-
-    @GetMapping("/byclient/{id}")
-    public Optional<Loan> getClientId(@PathVariable("id") int id){
-        return loanService.getClientId(id);
+    public ResponseEntity<Loan> saveLoan(@RequestBody Loan loan) {
+        Loan loanNew = loanService.saveLoan(loan);
+        return ResponseEntity.ok(loanNew);
     }
 
 

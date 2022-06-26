@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class LoanService {
@@ -15,14 +14,11 @@ public class LoanService {
     @Autowired
     LoanRepository loanRepository;
 
-    public Loan save(Loan loan){
+    public Loan saveLoan(Loan loan){
         Loan newloan = loanRepository.save(loan);
         return newloan;
     }
 
-    public Optional<Loan> getClientId(int id){
-        return loanRepository.findById(id);
-    }
 
     public List<Loan> getAll(){
         return loanRepository.findAll();

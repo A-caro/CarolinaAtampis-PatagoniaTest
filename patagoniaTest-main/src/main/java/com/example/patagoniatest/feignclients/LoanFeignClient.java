@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @FeignClient(name ="loan-service")
-@RequestMapping("/Loan")
+@RequestMapping("/loan")
 
 public interface LoanFeignClient {
 
     @PostMapping()
-    Loan save(@RequestBody Loan loan);
+    Loan saveLoan(@RequestBody Loan loan);
 }

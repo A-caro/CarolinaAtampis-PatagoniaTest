@@ -19,7 +19,6 @@ public class ClientService {
     @Autowired
     LoanFeignClient loanFeignClient;
 
-
     private final ClientRepository clientRepository;
 
     @Autowired
@@ -58,12 +57,11 @@ public class ClientService {
         clientRepository.save(client.get());
     }
 
-    public Loan saveLoan(int id, Loan loan){
-    loan.setId(id);
-    Loan loanNew = loanFeignClient.save(loan);
-    return loanNew;
+    public Loan saveLoan(Long clientId, Loan loan){
+        loan.setClientId(clientId);
+        Loan loanNew = loanFeignClient.saveLoan(loan);
+        return loanNew;
     }
-
 
 }
 

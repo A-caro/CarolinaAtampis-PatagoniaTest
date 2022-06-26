@@ -17,8 +17,8 @@ import javax.persistence.Id;
 public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private double amount;
     private String type;
-    private int clientId;
+    private Long clientId;
 }

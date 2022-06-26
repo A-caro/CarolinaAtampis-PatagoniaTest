@@ -4,6 +4,7 @@ import com.example.patagoniatest.entity.Client;
 import com.example.patagoniatest.model.Loan;
 import com.example.patagoniatest.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,10 +47,10 @@ public class ClientController {
         clientService.updateCliente(id, client);
     }
 
-    @PostMapping("/saveclients/{id}")
-    public Loan saveLoan(@PathVariable("id") int id, @RequestBody Loan loan){
-        Loan loanNew = clientService.saveLoan(id, loan);
-        return loan;
+    @PostMapping("/saveloan/{clientId}")
+    public ResponseEntity<Loan> saveLoan(@PathVariable("clientId") Long clientId, @RequestBody Loan loan) {
+        Loan loanNew = clientService.saveLoan(clientId, loan);
+        return ResponseEntity.ok(loan);
     }
 
 
