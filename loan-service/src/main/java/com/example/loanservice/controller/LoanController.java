@@ -4,19 +4,18 @@ import com.example.loanservice.entity.Loan;
 import com.example.loanservice.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Service
+@RestController
 @RequestMapping("/loan")
 public class LoanController {
 
     @Autowired
     LoanService loanService;
 
-    @GetMapping("/All")
+    @GetMapping
     public List<Loan> getAll(){
         return loanService.getAll();
     }
